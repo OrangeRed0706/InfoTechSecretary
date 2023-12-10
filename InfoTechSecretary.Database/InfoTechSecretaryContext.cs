@@ -5,13 +5,13 @@ namespace InfoTechSecretary.Database;
 
 public class InfoTechSecretaryContext : DbContext
 {
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
-    public DbSet<Tag> Tags { get; set; }
-
     public InfoTechSecretaryContext() { }
 
     public InfoTechSecretaryContext(DbContextOptions<InfoTechSecretaryContext> options) : base(options) { }
+
+    public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Tag> Tags { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

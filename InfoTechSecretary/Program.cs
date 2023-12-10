@@ -1,7 +1,5 @@
 ﻿using InfoTechSecretary;
 using InfoTechSecretary.Database;
-using InfoTechSecretary.Database.Entities;
-using InfoTechSecretary.Database.Values;
 using Microsoft.EntityFrameworkCore;
 
 var context = new InfoTechSecretaryContext();
