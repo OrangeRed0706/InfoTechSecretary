@@ -14,8 +14,12 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
 
         builder
             .HasIndex(b => b.Provider)
-            .IsUnique()
             .HasDatabaseName("IX_Posts_Provider");
+
+        builder
+            .HasIndex(b => b.Link)
+            .IsUnique()
+            .HasDatabaseName("IX_Posts_Link");
 
         builder
             .Property(b => b.PostId)

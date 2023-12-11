@@ -42,13 +42,19 @@ public class BlogPostRepository(IServiceProvider serviceProvider) : IBlogPostRep
     {
         using var scope = serviceProvider.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<InfoTechSecretaryContext>();
+        var blog = context.Blogs.FirstOrDefault(x => x.Provider == blogInfo.Provider);
+        if (blog != null)
+        {
+            return;
+        }
+
         context.Blogs.Add(new Blog
         {
             Provider = blogInfo.Provider,
             Name = blogInfo.Name,
             Url = blogInfo.Url,
-            CreatedTime = DateTime.Now,
-            UpdatedTime = DateTime.Now,
+            CreatedTime = DateTimeOffset.UtcNow,
+            UpdatedTime = DateTimeOffset.UtcNow,
             IsEnabled = true,
         });
 

@@ -12,7 +12,7 @@ public static class ServiceProvider
     {
         services.AddDbContext<InfoTechSecretaryContext>(options =>
         {
-            options.EnableDetailedErrors();
+            //options.EnableDetailedErrors();
             options.LogTo(Console.WriteLine);
             options.AddInterceptors(new LoggingInterceptor());
             options.UseNpgsql(configuration.GetConnectionString("InfoTechSecretaryContext"));

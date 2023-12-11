@@ -93,10 +93,15 @@ namespace InfoTechSecretary.Database.Migrations
                 column: "BlogId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Posts_Link",
+                table: "Post",
+                column: "Link",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Posts_Provider",
                 table: "Post",
-                column: "Provider",
-                unique: true);
+                column: "Provider");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tags_Name",

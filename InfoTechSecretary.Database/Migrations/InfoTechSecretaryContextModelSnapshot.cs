@@ -112,8 +112,11 @@ namespace InfoTechSecretary.Database.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.HasIndex("Provider")
+                    b.HasIndex("Link")
                         .IsUnique()
+                        .HasDatabaseName("IX_Posts_Link");
+
+                    b.HasIndex("Provider")
                         .HasDatabaseName("IX_Posts_Provider");
 
                     b.ToTable("Post", (string)null);

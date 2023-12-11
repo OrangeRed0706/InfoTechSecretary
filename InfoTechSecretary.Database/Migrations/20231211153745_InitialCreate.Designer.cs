@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InfoTechSecretary.Database.Migrations
 {
     [DbContext(typeof(InfoTechSecretaryContext))]
-    [Migration("20231211152308_InitialCreate")]
+    [Migration("20231211153745_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -115,8 +115,11 @@ namespace InfoTechSecretary.Database.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.HasIndex("Provider")
+                    b.HasIndex("Link")
                         .IsUnique()
+                        .HasDatabaseName("IX_Posts_Link");
+
+                    b.HasIndex("Provider")
                         .HasDatabaseName("IX_Posts_Provider");
 
                     b.ToTable("Post", (string)null);
