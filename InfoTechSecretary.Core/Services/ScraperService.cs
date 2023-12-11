@@ -5,15 +5,6 @@ using InfoTechSecretary.Database.Values;
 
 namespace InfoTechSecretary.Core.Services;
 
-public interface IScraperService
-{
-    IBlogScraper GetScraperBlogListAsync(BlogProvider provider);
-
-    Task<IEnumerable<BlogInfo>> GetScraperBlogListAsync(CancellationToken cancellationToken = default);
-
-    Task ProcessBlogAsync(BlogInfo blogInfo, CancellationToken cancellationToken = default);
-}
-
 public class ScraperService(IBlogScraperFactory blogScraperFactory, IBlogPostRepository blogPostRepository) : IScraperService
 {
     public async Task<IEnumerable<BlogInfo>> GetScraperBlogListAsync(CancellationToken cancellationToken)
