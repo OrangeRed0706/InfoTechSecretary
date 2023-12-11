@@ -1,8 +1,4 @@
-using InfoTechSecretary.Core.Interfaces;
-using InfoTechSecretary.Core.Model;
 using InfoTechSecretary.Core.Services;
-using InfoTechSecretary.Database.Entities;
-using Post = InfoTechSecretary.Core.Model.Post;
 
 namespace InfoTechSecretary.Worker;
 

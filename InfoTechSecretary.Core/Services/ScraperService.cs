@@ -24,12 +24,14 @@ public class ScraperService(IBlogScraperFactory blogScraperFactory, IBlogPostRep
             BlogId = x.BlogId,
             Provider = x.Provider,
             Name = x.Name,
-            Url = x.Url
+            Url = x.Url,
         });
     }
 
     public IBlogScraper GetScraperBlogListAsync(BlogProvider provider)
-        => blogScraperFactory.GetScraper(provider);
+    {
+        return blogScraperFactory.GetScraper(provider);
+    }
 
     public async Task ProcessBlogAsync(BlogInfo blogInfo, CancellationToken stoppingToken)
     {

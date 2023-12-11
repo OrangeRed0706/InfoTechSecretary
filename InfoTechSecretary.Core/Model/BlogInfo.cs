@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using InfoTechSecretary.Database.Values;
+﻿using InfoTechSecretary.Database.Values;
 
 namespace InfoTechSecretary.Core.Model;
 

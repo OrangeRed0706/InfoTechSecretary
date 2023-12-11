@@ -1,12 +1,14 @@
 ﻿using InfoTechSecretary.Core.Model;
+using Post = InfoTechSecretary.Database.Entities.Post;
+using Tag = InfoTechSecretary.Database.Entities.Tag;
 
 namespace InfoTechSecretary.Core.Mapper;
 
 public static class Mapper
 {
-    public static Database.Entities.Post MapToBlogPost(this Post post, BlogInfo blogInfo)
+    public static Post MapToBlogPost(this Model.Post post, BlogInfo blogInfo)
     {
-        return new Database.Entities.Post
+        return new Post
         {
             BlogId = blogInfo.BlogId,
             Provider = blogInfo.Provider,
@@ -16,11 +18,11 @@ public static class Mapper
             Link = post.Link,
             CreatedTime = DateTimeOffset.UtcNow,
             UpdatedTime = DateTimeOffset.UtcNow,
-            Tags = post.Tags.Select(y => new Database.Entities.Tag
+            Tags = post.Tags.Select(y => new Tag
             {
                 Name = y.Name,
                 CreatedTime = DateTimeOffset.UtcNow,
-                UpdatedTime = DateTimeOffset.UtcNow
+                UpdatedTime = DateTimeOffset.UtcNow,
             }).ToList(),
         };
     }
