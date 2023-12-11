@@ -18,7 +18,7 @@ public class DiscordNotificationService(TranslatorService translatorService) : I
             {
                 Title = post.Title,
                 Description = $"{post.Description} \n {translatedString}",
-                Url = $"{post.Link}",
+                Url = post.Link,
                 ThumbnailUrl = null,
                 ImageUrl = null,
                 Fields = new List<EmbedFieldBuilder>(),

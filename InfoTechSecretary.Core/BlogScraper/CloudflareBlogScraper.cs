@@ -35,7 +35,7 @@ public class CloudflareBlogScraper(IHttpClientFactory httpClientFactory) : IBlog
                 Title = title,
                 Time = DateTimeOffset.Parse(time).ToUniversalTime(),
                 Description = description,
-                Link = $"{blogInfo}/{link}",
+                Link = $"{blogInfo.Url}{link}",
                 Tags = string.Join(",", tags),
             });
         }
