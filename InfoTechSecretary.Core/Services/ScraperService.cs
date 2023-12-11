@@ -32,13 +32,22 @@ public class ScraperService(IBlogScraperFactory blogScraperFactory, IBlogPostRep
         return blogScraperFactory.GetScraper(provider);
     }
 
-    public async Task ProcessBlogAsync(BlogInfo blogInfo, CancellationToken stoppingToken)
+    public async Task<(IEnumerable<Post> newPostsToSave, BlogInfo blogInfo)> ProcessBlogAsync(BlogInfo blogInfo, CancellationToken stoppingToken)
     {
         var newPosts = await GetScrapePostsAsync(blogInfo, stoppingToken);
         var existingPosts = await blogPostRepository.GetExistingPostsAsync(blogInfo.Provider, 0, 100, stoppingToken);
         var existPostDic = existingPosts.ToDictionary(x => x.Link);
-        var newPostsToSave = newPosts.Where(x => !existPostDic.ContainsKey(x.Link!));
-        await blogPostRepository.AddNewPostsAsync(newPostsToSave.Select(x => x.MapToBlogPost(blogInfo)));
+        var newPostsToSave = newPosts.Where(x => !existPostDic.ContainsKey(x.Link!)).ToList();
+
+        if (newPostsToSave.Any())
+        {
+            await blogPostRepository.AddNewPostsAsync(newPostsToSave.Select(x => x.MapToBlogPost(blogInfo)));
+            return (newPostsToSave, blogInfo);
+        }
+        else
+        {
+            return (Enumerable.Empty<Post>(), blogInfo);
+        }
     }
 
     private Task<IEnumerable<Post>> GetScrapePostsAsync(BlogInfo blogInfo, CancellationToken cancellationToken = default)

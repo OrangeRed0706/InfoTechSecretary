@@ -9,5 +9,5 @@ public interface IScraperService
 
     Task<IEnumerable<BlogInfo>> GetScraperBlogListAsync(CancellationToken cancellationToken = default);
 
-    Task ProcessBlogAsync(BlogInfo blogInfo, CancellationToken cancellationToken = default);
+    Task<(IEnumerable<Post> newPostsToSave, BlogInfo blogInfo)> ProcessBlogAsync(BlogInfo blogInfo, CancellationToken cancellationToken = default);
 }

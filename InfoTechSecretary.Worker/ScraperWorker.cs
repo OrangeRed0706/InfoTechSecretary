@@ -5,7 +5,8 @@ namespace InfoTechSecretary.Worker;
 
 public class ScraperWorker(
     ILogger<ScraperWorker> logger,
-    IScraperService scraperService)
+    IScraperService scraperService,
+    INotificationService notificationService)
     : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -22,7 +23,8 @@ public class ScraperWorker(
         var scraperBlogList = await scraperService.GetScraperBlogListAsync(stoppingToken);
         foreach (var scraperBlog in scraperBlogList)
         {
-            await scraperService.ProcessBlogAsync(scraperBlog, stoppingToken);
+            var result = await scraperService.ProcessBlogAsync(scraperBlog, stoppingToken);
+            await notificationService.NotifyAsync(result, stoppingToken);
         }
     }
 }

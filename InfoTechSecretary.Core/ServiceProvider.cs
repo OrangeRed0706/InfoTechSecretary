@@ -16,6 +16,8 @@ public static class ServiceProvider
     {
         services.AddInfoTechSecretaryContext(configuration);
         services.AddSingleton<IBlogPostRepository, BlogPostRepository>();
+        services.AddSingleton<INotificationService, DiscordNotificationService>();
+        services.AddSingleton(new TranslatorService(configuration.GetSection("OpenAiKey").Get<string>()));
         services.AddScraperServices();
     }
 
