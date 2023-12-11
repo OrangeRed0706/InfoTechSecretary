@@ -18,12 +18,7 @@ public static class Mapper
             Link = post.Link,
             CreatedTime = DateTimeOffset.UtcNow,
             UpdatedTime = DateTimeOffset.UtcNow,
-            Tags = post.Tags.Select(y => new Tag
-            {
-                Name = y.Name,
-                CreatedTime = DateTimeOffset.UtcNow,
-                UpdatedTime = DateTimeOffset.UtcNow,
-            }).ToList(),
+            Tags = post.Tags,
         };
     }
 }

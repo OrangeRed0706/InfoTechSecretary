@@ -35,9 +35,5 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
             .Property(b => b.UpdatedTime)
             .HasColumnType("timestamp with time zone")
             .IsRequired();
-
-        builder
-            .HasMany(b => b.Posts)
-            .WithMany(p => p.Tags);
     }
 }

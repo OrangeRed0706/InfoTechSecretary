@@ -13,8 +13,7 @@ public class Post
     public string Link { get; set; }
     public DateTimeOffset? CreatedTime { get; set; }
     public DateTimeOffset? UpdatedTime { get; set; }
-    public virtual ICollection<Tag> Tags { get; set; } = new Collection<Tag>();
-
+    public string Tags { get; set; }
     public int BlogId { get; set; }
     public virtual Blog Blog { get; set; }
 }

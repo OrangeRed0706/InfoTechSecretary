@@ -8,5 +8,4 @@ public class Tag
     public string Name { get; set; }
     public DateTimeOffset? CreatedTime { get; set; }
     public DateTimeOffset? UpdatedTime { get; set; }
-    public virtual ICollection<Post> Posts { get; set; } = new Collection<Post>();
 }

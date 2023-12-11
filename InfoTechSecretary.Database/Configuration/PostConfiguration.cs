@@ -58,8 +58,9 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
             .IsRequired();
 
         builder
-            .HasMany(b => b.Tags)
-            .WithMany(p => p.Posts);
+            .Property(b => b.Tags)
+            .HasColumnType("varchar")
+            .IsRequired();
 
         builder
             .HasOne(b => b.Blog)
