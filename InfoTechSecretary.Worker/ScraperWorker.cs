@@ -1,3 +1,4 @@
+using InfoTechSecretary.Core.Interfaces;
 using InfoTechSecretary.Core.Services;
 
 namespace InfoTechSecretary.Worker;

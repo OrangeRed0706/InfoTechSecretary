@@ -1,7 +1,6 @@
 ﻿using InfoTechSecretary.Core.BlogScraper;
 using InfoTechSecretary.Core.Factory;
 using InfoTechSecretary.Core.Interfaces;
-using InfoTechSecretary.Core.Repository;
 using InfoTechSecretary.Core.Services;
 using InfoTechSecretary.Database;
 using InfoTechSecretary.Database.Values;
