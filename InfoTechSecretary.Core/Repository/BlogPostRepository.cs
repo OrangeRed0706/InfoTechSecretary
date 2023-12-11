@@ -29,8 +29,10 @@ public class BlogPostRepository(IServiceProvider serviceProvider) : IBlogPostRep
         await context.SaveChangesAsync();
     }
 
-    public Task<IEnumerable<Blog>> GetScraperBlogListAsync(CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Blog>> GetScraperBlogListAsync(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        using var scope = serviceProvider.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<InfoTechSecretaryContext>();
+        return await context.Blogs.ToListAsync(cancellationToken);
     }
 }

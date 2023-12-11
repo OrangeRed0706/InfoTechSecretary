@@ -11,5 +11,8 @@ public class Blog
     public string Url { get; set; }
     public DateTimeOffset? CreatedTime { get; set; }
     public DateTimeOffset? UpdatedTime { get; set; }
+
+    public bool IsEnabled { get; set; }
+
     public virtual ICollection<Post> Posts { get; set; } = new Collection<Post>();
 }

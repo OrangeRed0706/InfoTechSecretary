@@ -13,6 +13,11 @@ public class BlogConfiguration : IEntityTypeConfiguration<Blog>
         builder.HasKey(b => b.BlogId);
 
         builder
+            .HasIndex(b => b.Provider)
+            .IsUnique()
+            .HasDatabaseName("IX_Blogs_BlogId");
+
+        builder
             .Property(b => b.BlogId)
             .HasColumnType("integer")
             .UseIdentityAlwaysColumn();
@@ -45,6 +50,11 @@ public class BlogConfiguration : IEntityTypeConfiguration<Blog>
         builder
             .Property(b => b.UpdatedTime)
             .HasColumnType("timestamp with time zone")
+            .IsRequired();
+
+        builder
+            .Property(b => b.IsEnabled)
+            .HasColumnType("boolean")
             .IsRequired();
 
         builder

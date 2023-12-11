@@ -1,5 +1,6 @@
 ﻿using InfoTechSecretary.Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace InfoTechSecretary.Database;
 
@@ -15,8 +16,8 @@ public class InfoTechSecretaryContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var connectionString = "Host=localhost;Database=InfoTechSecretary;Username=postgres;Password=1234";
-        optionsBuilder.UseNpgsql(connectionString, options => { options.EnableRetryOnFailure(); });
+        var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+        optionsBuilder.UseNpgsql(configuration.GetConnectionString("InfoTechSecretaryContext"), options => { options.EnableRetryOnFailure(); });
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

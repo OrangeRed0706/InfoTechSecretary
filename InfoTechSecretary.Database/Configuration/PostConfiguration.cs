@@ -13,6 +13,11 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.HasKey(b => b.PostId);
 
         builder
+            .HasIndex(b => b.Provider)
+            .IsUnique()
+            .HasDatabaseName("IX_Posts_Provider");
+
+        builder
             .Property(b => b.PostId)
             .HasColumnType("integer")
             .UseIdentityAlwaysColumn();

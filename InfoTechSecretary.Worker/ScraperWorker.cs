@@ -13,6 +13,7 @@ public class ScraperWorker(
         while (!stoppingToken.IsCancellationRequested)
         {
             await ProcessBlogsAsync(stoppingToken);
+            break;
         }
     }
 

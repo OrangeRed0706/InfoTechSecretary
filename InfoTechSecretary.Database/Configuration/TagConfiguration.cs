@@ -12,6 +12,10 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
 
         builder.HasKey(b => b.TagId);
 
+        builder.HasIndex(b => b.Name)
+            .IsUnique()
+            .HasDatabaseName("IX_Tags_Name");
+
         builder
             .Property(b => b.TagId)
             .HasColumnType("integer")

@@ -8,6 +8,7 @@ public class Program
     {
         var builder = Host.CreateApplicationBuilder(args);
         builder.Services.AddLogging();
+        builder.Services.AddHttpClient();
         builder.Services.AddInfoTechSecretary(builder.Configuration);
         builder.Services.AddHostedService<ScraperWorker>();
 

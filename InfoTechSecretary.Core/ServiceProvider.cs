@@ -1,6 +1,7 @@
 ﻿using InfoTechSecretary.Core.BlogScraper;
 using InfoTechSecretary.Core.Factory;
 using InfoTechSecretary.Core.Interfaces;
+using InfoTechSecretary.Core.Repository;
 using InfoTechSecretary.Core.Services;
 using InfoTechSecretary.Database;
 using InfoTechSecretary.Database.Values;
@@ -14,6 +15,7 @@ public static class ServiceProvider
     public static void AddInfoTechSecretary(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddInfoTechSecretaryContext(configuration);
+        services.AddSingleton<IBlogPostRepository, BlogPostRepository>();
         services.AddScraperServices();
     }
 
