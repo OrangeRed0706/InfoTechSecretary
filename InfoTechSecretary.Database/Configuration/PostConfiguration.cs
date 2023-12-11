@@ -43,6 +43,16 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
             .IsRequired();
 
         builder
+            .Property(b => b.CreatedTime)
+            .HasColumnType("timestamp with time zone")
+            .IsRequired();
+
+        builder
+            .Property(b => b.UpdatedTime)
+            .HasColumnType("timestamp with time zone")
+            .IsRequired();
+
+        builder
             .HasMany(b => b.Tags)
             .WithMany(p => p.Posts);
 

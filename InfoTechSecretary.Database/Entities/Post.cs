@@ -11,6 +11,8 @@ public class Post
     public DateTimeOffset Time { get; set; }
     public string Description { get; set; }
     public string Link { get; set; }
+    public DateTimeOffset? CreatedTime { get; set; }
+    public DateTimeOffset? UpdatedTime { get; set; }
     public virtual ICollection<Tag> Tags { get; set; } = new Collection<Tag>();
 
     public int BlogId { get; set; }
