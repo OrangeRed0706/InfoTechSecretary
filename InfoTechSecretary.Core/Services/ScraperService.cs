@@ -9,6 +9,14 @@ public class ScraperService(IBlogScraperFactory blogScraperFactory, IBlogPostRep
 {
     public async Task<IEnumerable<BlogInfo>> GetScraperBlogListAsync(CancellationToken cancellationToken)
     {
+        //暫時先HardCode新增SeedData
+        await blogPostRepository.AddBlog(new BlogInfo
+        {
+            Provider = BlogProvider.Cloudflare,
+            Name = "Cloudflare",
+            Url = "https://blog.cloudflare.com/",
+        }, cancellationToken);
+
         var blog = await blogPostRepository.GetScraperBlogListAsync(cancellationToken);
         return blog.Select(x => new BlogInfo
         {
@@ -26,7 +34,6 @@ public class ScraperService(IBlogScraperFactory blogScraperFactory, IBlogPostRep
 
     public async Task ProcessBlogAsync(BlogInfo blogInfo, CancellationToken stoppingToken)
     {
-        var scraper = blogScraperFactory.GetScraper(blogInfo.Provider);
         var newPosts = await GetScrapePostsAsync(blogInfo, stoppingToken);
         var existingPosts = await blogPostRepository.GetExistingPostsAsync(blogInfo.Provider, 0, 100, stoppingToken);
         var existPostDic = existingPosts.ToDictionary(x => x.Link);

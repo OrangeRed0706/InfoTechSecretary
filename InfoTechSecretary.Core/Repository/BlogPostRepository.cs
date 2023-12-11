@@ -1,9 +1,11 @@
 ﻿using InfoTechSecretary.Core.Interfaces;
+using InfoTechSecretary.Core.Model;
 using InfoTechSecretary.Database;
 using InfoTechSecretary.Database.Entities;
 using InfoTechSecretary.Database.Values;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Post = InfoTechSecretary.Database.Entities.Post;
 
 namespace InfoTechSecretary.Core.Repository;
 
@@ -34,5 +36,22 @@ public class BlogPostRepository(IServiceProvider serviceProvider) : IBlogPostRep
         using var scope = serviceProvider.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<InfoTechSecretaryContext>();
         return await context.Blogs.ToListAsync(cancellationToken);
+    }
+
+    public async Task AddBlog(BlogInfo blogInfo, CancellationToken cancellationToken)
+    {
+        using var scope = serviceProvider.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<InfoTechSecretaryContext>();
+        context.Blogs.Add(new Blog
+        {
+            Provider = blogInfo.Provider,
+            Name = blogInfo.Name,
+            Url = blogInfo.Url,
+            CreatedTime = DateTime.Now,
+            UpdatedTime = DateTime.Now,
+            IsEnabled = true,
+        });
+
+        await context.SaveChangesAsync(cancellationToken);
     }
 }
