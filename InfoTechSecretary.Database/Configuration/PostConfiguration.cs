@@ -47,7 +47,17 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
             .IsRequired();
 
         builder
+            .Property(b => b.TranslatedDescription)
+            .HasColumnType("varchar")
+            .IsRequired();
+
+        builder
             .Property(b => b.Link)
+            .HasColumnType("varchar")
+            .IsRequired();
+
+        builder
+            .Property(b => b.IconUrl)
             .HasColumnType("varchar")
             .IsRequired();
 

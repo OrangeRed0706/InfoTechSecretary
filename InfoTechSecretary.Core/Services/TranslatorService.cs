@@ -15,7 +15,7 @@ public class TranslatorService
         _openAiApi = OpenAiService.Factory.Create("NoDI");
     }
 
-    public async Task<string> TranslateAndImproveAsync(string textToTranslate, double temperature = 0.2)
+    public async Task<string> TranslateAndImproveAsync(string textToTranslate, double temperature = 0.1)
     {
         if (string.IsNullOrEmpty(textToTranslate))
         {
@@ -29,7 +29,7 @@ public class TranslatorService
                 .AddAssistantMessage("I'm here to help you with translation and improvement. Please provide the text you'd like to translate.")
                 .AddUserMessage("I'd like to translate the following text and also improve its literary quality.")
                 .AddSystemMessage("""
-                                  請你照著原文翻成繁體中文，並且改善文法、用詞、句子結構、邏輯、語意、語氣、情感、風格、文采、修辭、修飾，但請不要改變原意
+                                  請你照著原文翻成繁體中文，但請不要改變原意，改善文法、用詞、句子結構、邏輯、語意、語氣、情感、風格、文采、修辭、修飾
                                   """)
                 .WithModel(ChatModelType.Gpt4)
                 .AddMessage(textToTranslate)

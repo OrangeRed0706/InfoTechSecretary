@@ -40,6 +40,10 @@ namespace InfoTechSecretary.Database.Migrations
                         .IsRequired()
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("IconUrl")
+                        .IsRequired()
+                        .HasColumnType("varchar(500)");
+
                     b.Property<bool>("IsEnabled")
                         .HasColumnType("boolean");
 
@@ -86,6 +90,10 @@ namespace InfoTechSecretary.Database.Migrations
                         .IsRequired()
                         .HasColumnType("varchar");
 
+                    b.Property<string>("IconUrl")
+                        .IsRequired()
+                        .HasColumnType("varchar");
+
                     b.Property<string>("Link")
                         .IsRequired()
                         .HasColumnType("varchar");
@@ -101,6 +109,10 @@ namespace InfoTechSecretary.Database.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("TranslatedDescription")
                         .IsRequired()
                         .HasColumnType("varchar");
 

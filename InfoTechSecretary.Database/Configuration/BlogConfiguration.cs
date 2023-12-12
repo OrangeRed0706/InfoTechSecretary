@@ -43,6 +43,11 @@ public class BlogConfiguration : IEntityTypeConfiguration<Blog>
             .IsRequired();
 
         builder
+            .Property(b => b.IconUrl)
+            .HasColumnType("varchar(500)")
+            .IsRequired();
+
+        builder
             .Property(b => b.CreatedTime)
             .HasColumnType("timestamp with time zone")
             .IsRequired();

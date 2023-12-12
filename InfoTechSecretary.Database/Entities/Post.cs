@@ -10,6 +10,7 @@ public class Post
     public string Title { get; set; }
     public DateTimeOffset Time { get; set; }
     public string Description { get; set; }
+    public string TranslatedDescription { get; set; }
     public string Link { get; set; }
     public string IconUrl { get; set; }
     public DateTimeOffset? CreatedTime { get; set; }
