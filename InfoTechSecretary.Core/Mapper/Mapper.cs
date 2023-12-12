@@ -19,6 +19,10 @@ public static class Mapper
             CreatedTime = DateTimeOffset.UtcNow,
             UpdatedTime = DateTimeOffset.UtcNow,
             Tags = post.Tags,
+            TranslatedDescription = post.TranslatedDescription,
+            IsNotified = post.IsNotified,
+            IsProcessed = post.IsProcessed,
+            IconUrl = post.IconUrl,
         };
     }
 }

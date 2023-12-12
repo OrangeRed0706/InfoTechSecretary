@@ -27,9 +27,8 @@ public class TranslatorService
             var results = await _openAiApi.Chat
                 .Request(new Rystem.OpenAi.Chat.ChatMessage { Role = ChatRole.User, Content = string.Empty })
                 .AddAssistantMessage("I'm here to help you with translation and improvement. Please provide the text you'd like to translate.")
-                .AddUserMessage("I'd like to translate the following text and also improve its literary quality.")
                 .AddSystemMessage("""
-                                  請你照著原文翻成繁體中文，但請不要改變原意，改善文法、用詞、句子結構、邏輯、語意、語氣、情感、風格、文采、修辭、修飾
+                                  請你照著原文翻成繁體中文，不要改變原意
                                   """)
                 .WithModel(ChatModelType.Gpt4)
                 .AddMessage(textToTranslate)

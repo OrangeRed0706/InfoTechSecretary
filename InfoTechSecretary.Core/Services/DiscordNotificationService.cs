@@ -17,7 +17,11 @@ public class DiscordNotificationService(TranslatorService translatorService) : I
             var embed = new EmbedBuilder
             {
                 Title = post.Title,
-                Description = $"{post.Description} \n {translatedString}",
+                Description = $"""
+                               {post.Description}
+
+                               {translatedString}
+                               """,
                 Url = post.Link,
                 ThumbnailUrl = null,
                 ImageUrl = null,
