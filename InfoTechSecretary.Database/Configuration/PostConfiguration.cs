@@ -77,6 +77,16 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
             .IsRequired();
 
         builder
+            .Property(b => b.IsProcessed)
+            .HasColumnType("boolean")
+            .IsRequired();
+
+        builder
+            .Property(b => b.IsNotified)
+            .HasColumnType("boolean")
+            .IsRequired();
+
+        builder
             .HasOne(b => b.Blog)
             .WithMany(p => p.Posts)
             .HasForeignKey(p => p.BlogId)

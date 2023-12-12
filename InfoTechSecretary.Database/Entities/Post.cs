@@ -16,6 +16,8 @@ public class Post
     public DateTimeOffset? CreatedTime { get; set; }
     public DateTimeOffset? UpdatedTime { get; set; }
     public string Tags { get; set; }
+    public bool IsProcessed { get; set; }
+    public bool IsNotified { get; set; }
     public int BlogId { get; set; }
     public virtual Blog Blog { get; set; }
 }
