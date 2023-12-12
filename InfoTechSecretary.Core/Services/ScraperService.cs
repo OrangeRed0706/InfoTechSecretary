@@ -15,6 +15,7 @@ public class ScraperService(IBlogScraperFactory blogScraperFactory, IBlogPostRep
             Provider = BlogProvider.Cloudflare,
             Name = "Cloudflare",
             Url = "https://blog.cloudflare.com/",
+            IconUrl = "https://blog.cloudflare.com/favicon.ico"
         }, cancellationToken);
 
         var blog = await blogPostRepository.GetScraperBlogListAsync(cancellationToken);
@@ -24,6 +25,7 @@ public class ScraperService(IBlogScraperFactory blogScraperFactory, IBlogPostRep
             Provider = x.Provider,
             Name = x.Name,
             Url = x.Url,
+            IconUrl = x.IconUrl
         });
     }
 

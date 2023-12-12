@@ -53,6 +53,7 @@ public class BlogPostRepository(IServiceProvider serviceProvider) : IBlogPostRep
             Provider = blogInfo.Provider,
             Name = blogInfo.Name,
             Url = blogInfo.Url,
+            IconUrl = blogInfo.IconUrl,
             CreatedTime = DateTimeOffset.UtcNow,
             UpdatedTime = DateTimeOffset.UtcNow,
             IsEnabled = true,

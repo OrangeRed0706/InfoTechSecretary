@@ -28,9 +28,12 @@ public class DiscordNotificationService(TranslatorService translatorService) : I
                 {
                     Name = blogInfo.Provider.ToString(),
                     Url = blogInfo.Url,
-                    IconUrl = null
+                    IconUrl = blogInfo.IconUrl
                 },
-                Footer = null
+                Footer = new EmbedFooterBuilder()
+                {
+                    Text = "InfoTechSecretary"
+                }
             }.Build();
 
             await client.SendMessageAsync(embeds: new[] { embed });

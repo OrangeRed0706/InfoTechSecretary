@@ -9,6 +9,7 @@ public class Blog
     public BlogProvider Provider { get; set; }
     public string Name { get; set; }
     public string Url { get; set; }
+    public string IconUrl { get; set; }
     public DateTimeOffset? CreatedTime { get; set; }
     public DateTimeOffset? UpdatedTime { get; set; }
 
